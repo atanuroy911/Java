@@ -52,9 +52,8 @@ jobs:
           infer --version
       - run: touch optcd-6.txt
       - name: Run infer
-        run: |-
-          mvn clean
-          infer --java-version 21 --fail-on-issue  --print-logs --no-progress-bar -- mvn test
+        run: "mvn clean\ninfer --java-version 21 --fail-on-issue  --print-logs --no-progress-bar
+          -- mvn test\n --no-stats -DdisableXmlReport=true cleaninfer"
       - run: touch optcd-7.txt
       - name: Upload inotifywait logs
         uses: actions/upload-artifact@v4
